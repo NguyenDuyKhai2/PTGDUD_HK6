@@ -44,7 +44,7 @@ function App() {
       </div>
 
       <div className="input-group">
-        <label>Input Rate (%)</label>
+        <label>Rate </label>
         <input type="number" value={rate} onChange={(e) => setRate(e.target.value)} />
       </div>
 
