@@ -1,0 +1,342 @@
+
+.header{
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    right: 0px;
+    /* width: 1440px;  */
+    height: 80px; 
+    background: #FFFFFFFF; 
+    border-radius: 0px; 
+    box-shadow: 0px 0px 1px #171a1f26, 0px 0px 2px #171a1f33;
+
+    margin-bottom: 100px;
+}
+
+
+.logo {
+    position: absolute; 
+    top: 19px; 
+    left: 48px; 
+    width: 154px; 
+    height: 49px; 
+}
+
+.search {
+    position: absolute; 
+    top: 18px; 
+    left: 215px; 
+    opacity: 1; 
+  }
+.search-input {
+    width: 405px; 
+    height: 44px; 
+    padding-left: 44px; 
+    padding-right: 16px; 
+    font-size: 16px; 
+    line-height: 26px; 
+    font-weight: 400; 
+    background: #F3F4F6FF; 
+    border-radius: 12px; 
+    border-width: 0px; 
+    outline: none; 
+}
+.search-img {
+    position: absolute; 
+    top: 16px; 
+    right: 16px; 
+    width: 20px; 
+    height: 20px; 
+    fill: #171A1FFF; 
+    left: 10px;
+}
+.search-img.left {
+    left: 16px; 
+}
+ 
+/* .search-input:hover {
+    color: #171A1FFF; 
+    background: #F3F4F6FF; 
+} */
+  
+.search-input:focused {
+    color: #171A1FFF; 
+    background: #FFFFFFFF; 
+}
+.search-input:disabled {
+    color: #171A1FFF; 
+    background: #F3F4F6FF; 
+}
+/* .search :disabled + .icon, .textbox :disabled + .icon + .icon {
+    fill: #171A1FFF; 
+} */
+
+.header-menu {
+    position: absolute; 
+    top: 6px; 
+    left: 636px; 
+    width: 458px; 
+    height: 68px; 
+    display: flex; 
+    align-items: center; 
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    opacity: 1; 
+    margin-left: 77px;
+
+}
+  
+.header-menu .header-menu-item {
+    padding: 23px 24px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    color: #565E6CFF; 
+    /* background: #000000FF;  */
+    border-radius: 0px; 
+    cursor: pointer; 
+    white-space: nowrap; 
+}
+  
+
+.header-menu .header-menu-item:nth-child(1) {
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #565E6CFF; 
+}
+  
+.header-menu .header-menu-item:nth-child(2) {
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #565E6CFF; 
+}
+  
+.header-menu .header-menu-item:nth-child(3) {
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #565E6CFF; 
+}
+  
+.header-menu .header-menu-item:nth-child(4) {
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #565E6CFF; 
+}
+  
+.header-menu .header-menu-item:nth-child(5) {
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #565E6CFF; 
+}
+
+.button {
+    position: absolute; 
+    top: 18px; 
+    left: 1148px; 
+    height: 44px; 
+    padding: 0 16px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: Manrope; 
+    font-size: 16px; 
+    line-height: 26px; 
+    font-weight: 400; 
+    color: #F44B87FF;
+    background: #FEF0F5FF;
+    opacity: 1; 
+    border: none; 
+    border-radius: 12px;
+    margin-left: 20px;
+    
+    margin-left: 148px;
+
+}
+.button .icon {
+    width: 20px; 
+    height: 20px; 
+    fill: #F44B87FF;
+}
+
+.button:hover {
+    color: #F44B87FF;
+    background: #FDDCE8FF; 
+}
+  
+.button:hover:active {
+    color: #F44B87FF;
+    background: #FBC8DAFF; 
+}
+  
+.button:disabled {
+    opacity: 0.4; 
+}
+
+.avatar {
+    position: absolute; 
+    top: 18px; 
+    left: 1348px; 
+    width: 44px; 
+    height: 44px; 
+    background: #FBC8DAFF; 
+    opacity: 1; 
+    overflow: hidden; 
+    border-radius: 22px; 
+    
+    margin-left: 151px;
+}
+.avatar img {
+    width: 44px; 
+    height: 44px; 
+}
+.avatar .badge {
+    width: 11px; 
+    height: 11px; 
+    border-radius: 5.5px; 
+}
+.avatar.active .badge {
+    background: #000000FF; 
+    opacity: 0; 
+    border-width: 1.5px; 
+    border-color: #FFFFFFFF; 
+}
+.avatar.inactive .badge {
+    background: #000000FF; 
+    opacity: 0; 
+    border-width: 1.5px; 
+    border-color: #FFFFFFFF; 
+}
+.avatar.idle .badge {
+    background: #000000FF; 
+    opacity: 0; 
+    border-width: 1.5px; 
+    border-color: #FFFFFFFF; 
+}
+
+.footer{
+    position: absolute; 
+    bottom: 0px;
+    left: 0px; 
+    right: 0px;
+    height: 380px; 
+    background: #1D2128FF; 
+    border-radius: 6px; 
+}
+.about-us {
+    position: absolute; 
+    top: 40px; 
+    left: 48px; 
+    width: 65px; 
+    height: 22px; 
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 700; 
+    color: #FFFFFFFF; 
+}
+.welcome {
+    position: absolute; 
+    top: 76px; 
+    left: 48px; 
+    width: 507px; 
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #DEE1E6FF; 
+}
+.email {
+    position: absolute; 
+    top: 134px; 
+    left: 48px; 
+    opacity: 1; 
+}
+.email input {
+    width: 396px; 
+    height: 36px; 
+    padding-left: 12px; 
+    padding-right: 12px; 
+    font-family: Manrope; 
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    background: #FFFFFFFF; 
+    border-radius: 6px;
+    border-width: 1px; 
+    border-color: #BCC1CAFF; 
+    border-style: solid; 
+    outline: none; 
+}
+
+.email input:hover {
+    color: #BCC1CAFF; 
+    background: #FFFFFFFF; 
+    border-color: #A7ADB7FF; 
+}
+  
+.email input:focused {
+    color: #BCC1CAFF; 
+    background: #FFFFFFFF; 
+    border-color: #9095A0FF; 
+}
+ 
+.email input:disabled {
+    color: #BCC1CAFF; 
+    background: #FFFFFFFF; 
+    border-color: #BCC1CAFF; 
+}
+/* .email :disabled + .icon, .email :disabled + .icon + .icon {
+    fill: #BCC1CAFF; 
+} */
+
+
+.send {
+    position: absolute; 
+    top: 134px; 
+    left: 459px; 
+    height: 36px; 
+    padding: 0 12px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: Manrope; 
+    font-size: 14px; 
+    line-height: 22px; 
+    font-weight: 400; 
+    color: #FFFFFFFF; 
+    background: #F44B87FF; 
+    opacity: 1; 
+    border: none; 
+    border-radius: 6px;
+    margin-left: 18px;
+    margin-top: 2px;
+  }
+  
+  .send:hover {
+    color: #FFFFFFFF; 
+    background: #F0105EFF; 
+  }
+ 
+  .send:hover:active {
+    color: #FFFFFFFF; 
+    background: #D20D52FF; 
+  }
+  
+  .send:disabled {
+    opacity: 0.4; 
+  }
+  .flex-container {
+    display: flex;
+    background-color: DodgerBlue;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+  }

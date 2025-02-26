@@ -1,0 +1,29 @@
+/* baitap1.css */
+
+.btn-primary {
+    background-color: blue;
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: red;
+    color: white;
+  }
+  
+  .btn-success {
+    background-color: green;
+    color: white;
+  }
+  
+  .btn-default {
+    background-color: gray;
+    color: white;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
