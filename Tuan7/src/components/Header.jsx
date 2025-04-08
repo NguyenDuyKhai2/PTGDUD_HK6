@@ -9,7 +9,7 @@ import Search from "../assets/Search.png"
 export default function Header() {
   return (
     <header className="flex items-center justify-between p-4 bg-white border-b">
-      <h1 className="text-3xl font-bold text-pink-600">Dashboard</h1>
+      <h1 className="text-3xl font-bold text-pink-500">Dashboard</h1>
       <div className="flex items-center gap-4">
         <div className="relative">
         <img src={Search} alt="search" className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 opacity-60"/>
