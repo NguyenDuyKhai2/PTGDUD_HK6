@@ -1,9 +1,15 @@
-const MainContent = ({ children }) => {
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from '../pages/Dashboard';
+
+export default function MainContent() {
   return (
-    <main className="flex-1 bg-gray-50 p-6 overflow-auto">
-      {children}
+    <main className="flex-1 overflow-y-auto p-4 bg-gray-50">
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      </Routes>
     </main>
   );
-};
+}
 
-export default MainContent;

@@ -103,7 +103,7 @@ export default function Dashboard() {
   
   return (
     <div className="space-y-6">
-      {/* <div className='flex space-x-2 items-center'>
+      <div className='flex space-x-2 items-center'>
         <img src={LayoutDashboard} alt="" />
         <h1 className="text-xl font-bold">Overview</h1>
       </div>
@@ -134,18 +134,6 @@ export default function Dashboard() {
             </div>
           ))
         )}
-      </div> */}
-    <div className="flex space-x-2 items-center">
-        <h1 className="text-xl font-bold">Overview</h1>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {[...Array(3)].map((_, i) => (
-          <div
-            key={i}
-            className="p-4 rounded-xl shadow-md bg-gray-100 h-32 flex items-center justify-center text-gray-400 border border-dashed"
-          >
-          </div>
-        ))}
       </div>
 
       <div className="mt-8">

@@ -1,41 +1,51 @@
-import { NavLink } from "react-router-dom";
-import { Home, Folder, Users, BarChart, MessageSquare, Settings } from "lucide-react";
-import logo from "../assets/Image 1858.png";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Sidebar = () => {
+import Logo from "../assets/Image 1858.png"
+import LayoutDashboard from "../assets/Squares four 1.png"
+import FolderKanban from "../assets/Folder.png"
+import Users from "../assets/Groups.png"
+import BarChart2 from "../assets/Pie chart.png"
+import MessageSquare from "../assets/Chat.png"
+import Zap from "../assets/Code.png"
+import Group from "../assets/Group.png"
+
+const links = [
+  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/projects', label: 'Projects', icon: FolderKanban },
+  { to: '/teams', label: 'Teams', icon: Users },
+  { to: '/analytics', label: 'Analytics', icon: BarChart2 },
+  { to: '/messages', label: 'Messages', icon: MessageSquare },
+  { to: '/integrations', label: 'Integrations', icon: Zap },
+];
+
+export default function Sidebar() {
   return (
-    <div className="w-64 bg-white min-h-screen p-4 border-r">
-      <div className="flex items-center space-x-2 mb-8">
-        <img src={logo} alt="Logo" />
-        
+    <aside className="hidden md:flex flex-col justify-between h-screen bg-white border-r p-4 space-y-4">
+      <div>
+        <img src={Logo} alt="logo" />
+        <nav className="space-y-2 mt-4">
+          {links.map(({ to, label, icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-2 rounded-lg text-sm font-medium hover:bg-pink-100 transition ${isActive ? 'bg-pink-400 text-white' : 'text-gray-700'}`
+              }
+            >
+              <img src={icon} alt={label} className="w-5 h-5" />
+              <span>{label}</span>
+            </NavLink>
+          ))}
+        </nav>
       </div>
-      <nav className="space-y-2">
-        <NavLink to="/" className={({ isActive }) => `flex items-center space-x-2 p-2 rounded-md ${isActive ? 'bg-pink-100 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-100'}`}>
-          <Home size={18} /> <span>Dashboard</span>
-        </NavLink>
-        <NavLink to="/projects" className={({ isActive }) => `flex items-center space-x-2 p-2 rounded-md ${isActive ? 'bg-pink-100 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-100'}`}>
-          <Folder size={18} /> <span>Projects</span>
-        </NavLink>
-        <NavLink to="/teams" className={({ isActive }) => `flex items-center space-x-2 p-2 rounded-md ${isActive ? 'bg-pink-100 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-100'}`}>
-          <Users size={18} /> <span>Teams</span>
-        </NavLink>
-        <NavLink to="/analytics" className={({ isActive }) => `flex items-center space-x-2 p-2 rounded-md ${isActive ? 'bg-pink-100 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-100'}`}>
-          <BarChart size={18} /> <span>Analytics</span>
-        </NavLink>
-        <NavLink to="/messages" className={({ isActive }) => `flex items-center space-x-2 p-2 rounded-md ${isActive ? 'bg-pink-100 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-100'}`}>
-          <MessageSquare size={18} /> <span>Messages</span>
-        </NavLink>
-        <NavLink to="/settings" className={({ isActive }) => `flex items-center space-x-2 p-2 rounded-md ${isActive ? 'bg-pink-100 text-pink-600 font-medium' : 'text-gray-700 hover:bg-gray-100'}`}>
-          <Settings size={18} /> <span>Settings</span>
-        </NavLink>
-      </nav>
-
-      <div className="mt-10 p-4 rounded-lg bg-blue-50">
-        <h2 className="font-semibold text-sm mb-2">V2.0 is available</h2>
-        <button className="bg-blue-600 text-white text-sm px-3 py-1 rounded-md">Try now</button>
+      <div className="mt-auto py-20">
+        <div className="bg-blue-50 p-4 rounded-xl text-center">
+          <img src={Group} alt="Group" className="mx-auto mb-2" />
+          <p className="text-lg font-bold mb-1">V2.0 is available</p>
+          <button className="px-3 py-1 border border-blue-400 text-blue-600 rounded hover:bg-blue-100 text-sm">Try now</button>
+        </div>
       </div>
-    </div>
+    </aside>
   );
-};
-
-export default Sidebar;
+}
