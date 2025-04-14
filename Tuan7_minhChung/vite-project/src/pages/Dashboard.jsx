@@ -30,15 +30,15 @@ const statusStyle = {
   Completed: "bg-green-100 text-green-600",
 };
 
-const tableData = [
-  { id: 1, name: "Elizabeth Lee", company: "AvatarSystems", value: "$359", date: "10/07/2023", status: "New", avatar: avatar1 },
-  { id: 2, name: "Carlos Garcia", company: "SmoozeShift", value: "$747", date: "24/07/2023", status: "New", avatar: avatar2 },
-  { id: 3, name: "Elizabeth Bailey", company: "Prime Time Telecom", value: "$564", date: "08/08/2023", status: "In-progress", avatar: avatar3 },
-  { id: 4, name: "Ryan Brown", company: "OmniTech Corporation", value: "$541", date: "31/08/2023", status: "In-progress", avatar: avatar4 },
-  { id: 5, name: "Ryan Young", company: "DataStream Inc.", value: "$769", date: "01/05/2023", status: "Completed", avatar: avatar5 },
-  { id: 6, name: "Hailey Adams", company: "FlowRush", value: "$922", date: "10/06/2023", status: "Completed", avatar: avatar6 },
+// const tableData = [
+//   { id: 1, name: "Elizabeth Lee", company: "AvatarSystems", value: "$359", date: "10/07/2023", status: "New", avatar: avatar1 },
+//   { id: 2, name: "Carlos Garcia", company: "SmoozeShift", value: "$747", date: "24/07/2023", status: "New", avatar: avatar2 },
+//   { id: 3, name: "Elizabeth Bailey", company: "Prime Time Telecom", value: "$564", date: "08/08/2023", status: "In-progress", avatar: avatar3 },
+//   { id: 4, name: "Ryan Brown", company: "OmniTech Corporation", value: "$541", date: "31/08/2023", status: "In-progress", avatar: avatar4 },
+//   { id: 5, name: "Ryan Young", company: "DataStream Inc.", value: "$769", date: "01/05/2023", status: "Completed", avatar: avatar5 },
+//   { id: 6, name: "Hailey Adams", company: "FlowRush", value: "$922", date: "10/06/2023", status: "Completed", avatar: avatar6 },
   
-];
+// ];
 
 const tableColumns = [
   {
@@ -87,9 +87,11 @@ const tableColumns = [
   }
 ];
 
+
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState([]);
+  const [tableData, setTableData] = useState([]);
   useEffect(() => {
     axios.get('https://67e2cb5297fc65f535379d73.mockapi.io/cards')
       .then(res => {
@@ -100,6 +102,20 @@ export default function Dashboard() {
       .catch(err => {
         console.error('Failed to fetch overview data:', err);
         setLoading(false);
+      });
+  }, []);
+  useEffect(() => {
+    axios.get('https://67e2cb5297fc65f535379d73.mockapi.io/table') // 👉 thay URL API thật của bạn
+      .then(res => {
+        const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
+        const processed = res.data.map((item, index) => ({
+          ...item,
+          avatar: avatars[index % avatars.length], // Gán avatar nếu API không có sẵn
+        }));
+        setTableData(processed);
+      })
+      .catch(err => {
+        console.error("Failed to fetch table data:", err);
       });
   }, []);
   
