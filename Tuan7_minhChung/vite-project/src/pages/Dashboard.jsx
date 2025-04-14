@@ -245,25 +245,29 @@ export default function Dashboard() {
                 }
                 className="w-full p-2 border rounded mb-4"
               />
-              {/* Bạn có thể thêm các trường khác tại đây tương tự */}
 
               <div className="flex justify-end space-x-2">
                 <button
-                  className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
-                  onClick={() => setIsModalOpen(false)}
-                >
-                  Cancel
-                </button>
-                <button
                   className="px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600"
-                  onClick={() => {
-                    // Gửi request cập nhật nếu cần thiết
-                    console.log("Updated row:", editingRow);
-                    setIsModalOpen(false);
+                  onClick={async () => {
+                    try {
+                      const response = await axios.put(
+                        `https://67e2cb5297fc65f535379d73.mockapi.io/table/${editingRow.id}`,
+                        editingRow
+                      );
+                      setTableData(prev =>
+                        prev.map(item => (item.id === editingRow.id ? response.data : item))
+                      );
+                      setIsModalOpen(false);
+                    } catch (error) {
+                      console.error("Failed to update:", error);
+                      alert("Failed to update data");
+                    }
                   }}
                 >
                   Save
                 </button>
+
               </div>
             </div>
           </div>
