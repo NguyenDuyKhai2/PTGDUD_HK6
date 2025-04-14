@@ -12,6 +12,8 @@ import avatar3 from "../assets/Avatar (3).png";
 import avatar4 from "../assets/Avatar (4).png"; 
 import avatar5 from "../assets/Avatar (5).png"; 
 import avatar6 from "../assets/Avatar 313.png"; 
+import ImportIcon from "../assets/Download.png"; 
+import ExportIcon from "../assets/Move up.png"; 
 
 import { Pencil } from "lucide-react";
 
@@ -29,12 +31,12 @@ const statusStyle = {
 };
 
 const tableData = [
-  // { id: 1, name: "Elizabeth Lee", company: "AvatarSystems", value: "$359", date: "10/07/2023", status: "New", avatar: avatar1 },
-  // { id: 2, name: "Carlos Garcia", company: "SmoozeShift", value: "$747", date: "24/07/2023", status: "New", avatar: avatar2 },
-  // { id: 3, name: "Elizabeth Bailey", company: "Prime Time Telecom", value: "$564", date: "08/08/2023", status: "In-progress", avatar: avatar3 },
-  // { id: 4, name: "Ryan Brown", company: "OmniTech Corporation", value: "$541", date: "31/08/2023", status: "In-progress", avatar: avatar4 },
-  // { id: 5, name: "Ryan Young", company: "DataStream Inc.", value: "$769", date: "01/05/2023", status: "Completed", avatar: avatar5 },
-  // { id: 6, name: "Hailey Adams", company: "FlowRush", value: "$922", date: "10/06/2023", status: "Completed", avatar: avatar6 },
+  { id: 1, name: "Elizabeth Lee", company: "AvatarSystems", value: "$359", date: "10/07/2023", status: "New", avatar: avatar1 },
+  { id: 2, name: "Carlos Garcia", company: "SmoozeShift", value: "$747", date: "24/07/2023", status: "New", avatar: avatar2 },
+  { id: 3, name: "Elizabeth Bailey", company: "Prime Time Telecom", value: "$564", date: "08/08/2023", status: "In-progress", avatar: avatar3 },
+  { id: 4, name: "Ryan Brown", company: "OmniTech Corporation", value: "$541", date: "31/08/2023", status: "In-progress", avatar: avatar4 },
+  { id: 5, name: "Ryan Young", company: "DataStream Inc.", value: "$769", date: "01/05/2023", status: "Completed", avatar: avatar5 },
+  { id: 6, name: "Hailey Adams", company: "FlowRush", value: "$922", date: "10/06/2023", status: "Completed", avatar: avatar6 },
   
 ];
 
@@ -137,10 +139,24 @@ export default function Dashboard() {
       </div>
 
       <div className="mt-8">
-        <div className='flex space-x-2 items-center mb-4'>
-          <img src={FileText} alt="texttext" />
-          <h1 className="text-xl font-bold">Detailed Report</h1>
+        <div className='flex items-center justify-between mb-4'>
+          <div className='flex space-x-2 items-center'>
+            <img src={FileText} alt="texttext" className="w-6 h-6" />
+            <h1 className="text-xl font-bold">Detailed Report</h1>
+          </div>
+          <div className="space-x-2 flex">
+            <button className="flex items-center space-x-1 px-3 py-1 border rounded-md text-pink-500 border-pink-300 hover:bg-pink-50">
+              <img src={ImportIcon} alt="Import" className="w-4 h-4" />
+              <span>Import</span>
+            </button>
+            <button className="flex items-center space-x-1 px-3 py-1 border rounded-md text-pink-500 border-pink-300 hover:bg-pink-50">
+              <img src={ExportIcon} alt="Export" className="w-4 h-4" />
+              <span>Export</span>
+            </button>
+          </div>
+
         </div>
+
 
         <DataTable
           columns={tableColumns}
@@ -149,7 +165,51 @@ export default function Dashboard() {
           pagination
           responsive
           className="rounded-md"
+          paginationComponentOptions={{
+            rowsPerPageText: 'Rows per page:',
+            rangeSeparatorText: 'of',
+            selectAllRowsItem: false,
+          }}
+          paginationPerPage={6}
+          paginationRowsPerPageOptions={[6, 12, 24]}
+          paginationComponent={({ currentPage, rowsPerPage, rowCount, onChangePage, onChangeRowsPerPage }) => {
+            const totalPages = Math.ceil(rowCount / rowsPerPage);
+            return (
+              <div className="flex justify-between items-center px-4 py-2 border-t text-sm text-gray-600">
+                <div>{rowCount} results</div>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => onChangePage(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`px-2 py-1 rounded ${currentPage === 1 ? 'text-gray-400' : 'hover:text-pink-600'}`}
+                  >
+                    &lt;
+                  </button>
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => onChangePage(i + 1)}
+                      className={`px-2 py-1 rounded-full ${currentPage === i + 1
+                        ? 'bg-pink-500 text-white'
+                        : 'hover:bg-gray-100'
+                        }`}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
+                  <button
+                    onClick={() => onChangePage(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`px-2 py-1 rounded ${currentPage === totalPages ? 'text-gray-400' : 'hover:text-pink-600'}`}
+                  >
+                    &gt;
+                  </button>
+                </div>
+              </div>
+            );
+          }}
         />
+
       </div>
     </div>
   );
