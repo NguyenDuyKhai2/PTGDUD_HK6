@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Header from './components/Header'; // Giả sử bạn đã tạo file này
+import Header from './components/Header'; /
 import Dashboard from './pages/Dashboard';
 import NotFound from './pages/NotFound';
 

@@ -40,58 +40,65 @@ const statusStyle = {
   
 // ];
 
-const tableColumns = [
-  {
-    name: "CUSTOMER NAME",
-    selector: row => row.name,
-    sortable: true,
-    cell: row => (
-      <div className="flex items-center gap-2">
-        <img src={row.avatar} alt={row.name} className="w-8 h-8 rounded-full" />
-        <span className="font-medium">{row.name}</span>
-      </div>
-    )
-  },
-  {
-    name: "COMPANY",
-    selector: row => row.company,
-    sortable: true,
-  },
-  {
-    name: "ORDER VALUE",
-    selector: row => row.value,
-    sortable: true,
-  },
-  {
-    name: "ORDER DATE",
-    selector: row => row.date,
-    sortable: true,
-  },
-  {
-    name: "STATUS",
-    selector: row => row.status,
-    cell: row => (
-      <span className={`px-2 py-1 rounded-full text-sm font-medium ${statusStyle[row.status]}`}>
-        {row.status}
-      </span>
-    ),
-  },
-  {
-      name: "",
-      cell: () => (
-        <button className="text-gray-500 hover:text-blue-600">
-          <Pencil size={16} />
-        </button>
-      ) 
-    
-  }
-];
+
 
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [cards, setCards] = useState([]);
   const [tableData, setTableData] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingRow, setEditingRow] = useState(null);
+  const handleEditClick = (row) => {
+    setEditingRow(row);
+    setIsModalOpen(true);
+  };
+  const tableColumns = [
+    {
+      name: "CUSTOMER NAME",
+      selector: row => row.name,
+      sortable: true,
+      cell: row => (
+        <div className="flex items-center gap-2">
+          <img src={row.avatar} alt={row.name} className="w-8 h-8 rounded-full" />
+          <span className="font-medium">{row.name}</span>
+        </div>
+      )
+    },
+    {
+      name: "COMPANY",
+      selector: row => row.company,
+      sortable: true,
+    },
+    {
+      name: "ORDER VALUE",
+      selector: row => row.value,
+      sortable: true,
+    },
+    {
+      name: "ORDER DATE",
+      selector: row => row.date,
+      sortable: true,
+    },
+    {
+      name: "STATUS",
+      selector: row => row.status,
+      cell: row => (
+        <span className={`px-2 py-1 rounded-full text-sm font-medium ${statusStyle[row.status]}`}>
+          {row.status}
+        </span>
+      ),
+    },
+    {
+      name: "",
+      cell: (row) => (
+        <button onClick={() => handleEditClick(row)} className="text-gray-500 hover:text-blue-600">
+          <Pencil size={16} />
+        </button>
+      )
+    }
+    
+  ];
   useEffect(() => {
     axios.get('https://67e2cb5297fc65f535379d73.mockapi.io/cards')
       .then(res => {
@@ -105,12 +112,12 @@ export default function Dashboard() {
       });
   }, []);
   useEffect(() => {
-    axios.get('https://67e2cb5297fc65f535379d73.mockapi.io/table') // 👉 thay URL API thật của bạn
+    axios.get('https://67e2cb5297fc65f535379d73.mockapi.io/table') 
       .then(res => {
         const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
         const processed = res.data.map((item, index) => ({
           ...item,
-          avatar: avatars[index % avatars.length], // Gán avatar nếu API không có sẵn
+          avatar: avatars[index % avatars.length], 
         }));
         setTableData(processed);
       })
@@ -225,6 +232,42 @@ export default function Dashboard() {
             );
           }}
         />
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
+            <div className="bg-white p-6 rounded-lg shadow-md w-96">
+              <h2 className="text-xl font-bold mb-4">Edit Customer</h2>
+              <label className="block mb-2 text-sm font-medium">Name</label>
+              <input
+                type="text"
+                value={editingRow?.name || ''}
+                onChange={(e) =>
+                  setEditingRow({ ...editingRow, name: e.target.value })
+                }
+                className="w-full p-2 border rounded mb-4"
+              />
+              {/* Bạn có thể thêm các trường khác tại đây tương tự */}
+
+              <div className="flex justify-end space-x-2">
+                <button
+                  className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="px-4 py-2 bg-pink-500 text-white rounded hover:bg-pink-600"
+                  onClick={() => {
+                    // Gửi request cập nhật nếu cần thiết
+                    console.log("Updated row:", editingRow);
+                    setIsModalOpen(false);
+                  }}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>
