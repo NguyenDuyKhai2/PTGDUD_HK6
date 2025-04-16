@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Light theme (mặc định) */
+.bg-gray-200 {
+    background-color: #edf2f7;
+  }
+  .text-gray-900 {
+    color: #1a202c;
+  }
+  
+  /* Dark theme */
+  .bg-gray-800 {
+    background-color: #2d3748;
+  }
+  .text-white {
+    color: #fff;
+  }
+  
+  .bg-gray-900 {
+    background-color: #1a202c;
+  }
+  
