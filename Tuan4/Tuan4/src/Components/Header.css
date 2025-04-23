@@ -1,0 +1,117 @@
+/* Header.module.css */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #ffffff;
+    border-radius: 0;
+    box-shadow: 0px 0px 1px rgba(23, 26, 31, 0.15), 0px 0px 2px rgba(23, 26, 31, 0.2);
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .logo img {
+    margin-top: 25px;
+    width: 154px;
+    height: 49px;
+  }
+  
+  .search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-img {
+    position: absolute;
+    left: 16px;
+    width: 20px;
+    height: 20px;
+    fill: #171a1f;
+  }
+  
+  .search-input {
+    width: 405px;
+    height: 44px;
+    padding-left: 44px;
+    padding-right: 16px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    background: #aac2f3;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+  }
+  
+  .search-input:focus {
+    color: #171a1f;
+    background-color: #ffffff;
+  }
+  
+  .header-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .header-menu-item {
+    font-size: 14px;
+    font-weight: 400;
+    color: #565e6c;
+    cursor: pointer;
+    padding: 23px 24px;
+  }
+  
+  .header-menu-item:hover {
+    color: #f44b87;
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #fef0f5;
+    color: #f44b87;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  .button .icon {
+    width: 20px;
+    height: 20px;
+    fill: #f44b87;
+    margin-right: 8px;
+  }
+  
+  .button:hover {
+    background-color: #fddce8;
+  }
+  
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background-color: #fbc8da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .avatar img {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+  }
+  
