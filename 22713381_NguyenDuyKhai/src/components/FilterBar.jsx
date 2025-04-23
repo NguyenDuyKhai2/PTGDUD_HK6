@@ -25,7 +25,7 @@ const FilterBar = ({ onSearch, onGenreChange }) => {
         Tìm kiếm
       </button>
 
-      {/* <select
+      <select
         onChange={(e) => onGenreChange(e.target.value)}
         className="border p-2 w-[200px]"
       >
@@ -34,7 +34,7 @@ const FilterBar = ({ onSearch, onGenreChange }) => {
         <option value="Khoa học">Khoa học</option>
         <option value="Công nghệ">Công nghệ</option>
         <option value="Tâm lý">Tâm lý</option>
-      </select> */}
+      </select>
     </form>
   );
 };
