@@ -23,7 +23,7 @@ const BookList = ({ books, onDelete }) => {
               <td className="border px-4 py-2">{book.genre}</td>
               <td className="border px-4 py-2">{book.year}</td>
               <td className="border px-4 py-2">
-                <button className="bg-red-500 text-white px-2 py-1 rounded">Xoá</button>
+                <button onClick={() => onDelete(book.id)} className="bg-red-500 text-white px-2 py-1 rounded">Xoá</button>
               </td>
             </tr>
           ))}
