@@ -1,7 +1,7 @@
-// src/components/BookList.jsx
 import React from 'react';
+import BookItem from './BookItem';
 
-const BookList = ({ books, onDelete }) => {
+const BookList = ({ books, onDelete, onEdit }) => {
   return (
     <div>
       <h2 className="text-xl font-bold mb-4">Danh sách sách</h2>
@@ -17,15 +17,12 @@ const BookList = ({ books, onDelete }) => {
         </thead>
         <tbody>
           {books.map(book => (
-            <tr key={book.id}>
-              <td className="border px-4 py-2">{book.title}</td>
-              <td className="border px-4 py-2">{book.author}</td>
-              <td className="border px-4 py-2">{book.genre}</td>
-              <td className="border px-4 py-2">{book.year}</td>
-              <td className="border px-4 py-2">
-                <button onClick={() => onDelete(book.id)} className="bg-red-500 text-white px-2 py-1 rounded">Xoá</button>
-              </td>
-            </tr>
+            <BookItem
+              key={book.id}
+              book={book}
+              onDelete={onDelete}
+              onEdit={onEdit}
+            />
           ))}
         </tbody>
       </table>

@@ -21,6 +21,12 @@ function App() {
     setBooks(prev => prev.filter(book => book.id !== id));
   };
 
+  const handleEditBook = (book) => {
+    // Tạm thời hiển thị alert để minh họa chức năng chỉnh sửa
+    alert(`Chỉnh sửa sách: ${book.title}`);
+    // Bạn có thể thêm logic chỉnh sửa, ví dụ mở form chỉnh sửa
+  };
+
   const handleSearch = (term) => {
     setSearchTerm(term);
   };
@@ -29,7 +35,6 @@ function App() {
     setSelectedGenre(genre);
   };
 
-  // 🔍 Lọc kết hợp tên và thể loại
   const filteredBooks = books.filter(book =>
     book.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (selectedGenre === '' || book.genre === selectedGenre)
@@ -39,7 +44,6 @@ function App() {
     <div className="container mx-auto mt-10 px-4">
       <h1 className="text-2xl font-bold mb-6">Quản lý Sách</h1>
 
-      {/* Hiển thị tổng số sách */}
       <div className="mb-4 text-lg">
         Tổng số sách: <span className="font-bold">{books.length}</span>
       </div>
@@ -47,7 +51,7 @@ function App() {
       <FilterBar onSearch={handleSearch} onGenreChange={handleGenreChange} />
 
       <AddBookForm onAdd={handleAddBook} />
-      <BookList books={filteredBooks} onDelete={handleDeleteBook} />
+      <BookList books={filteredBooks} onDelete={handleDeleteBook} onEdit={handleEditBook} />
     </div>
   );
 }
